@@ -207,7 +207,7 @@
 		if(!H.religion_is_legal())//So that they can't be heretics.
 			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
-		H.generate_stats(STAT_HT)
+		H.newgeneratestats(9,14,9,13,9,15,10,16)
 		H.generate_skills("ranged")
 
 /datum/job/countess
@@ -248,7 +248,7 @@
 		if(!H.religion_is_legal())//So that they can't be heretics.
 			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
-		H.generate_stats(STAT_IQ)
+		H.newgeneratestats(8,12,9,13,10,14,7,14)
 		H.generate_skills(list("melee","ranged","medical"))
 
 /datum/job/rd
@@ -278,12 +278,12 @@
 			access_RC_announce, access_keycard_auth, access_tcomsat, access_gateway, access_xenoarch, access_network, access_rd, access_research, access_medical, access_morgue, access_medical_equip)
 
 	equip(var/mob/living/carbon/human/H)
-		H.set_species("Machine")
+		//H.set_species("Machine")
 		if(!H.religion_is_legal())//So that they can't be heretics.
 			H.religion = LEGAL_RELIGION
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(12,15))
-		H.generate_stats(STAT_IQ)
+		H.newgeneratestats(7,12,8,13,12,17,6,11)
 		H.generate_skills(list("science","medical", "crafting"))
 
 /datum/job/scientist
@@ -305,7 +305,7 @@
 			H.religion = LEGAL_RELIGION
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(10,14))
-		H.generate_stats(STAT_IQ)
+		H.newgeneratestats(8,13,7,12,11,15,8,12)
 		H.generate_skills(list("science","medical", "crafting"))
 
 /datum/job/doctor
@@ -325,7 +325,7 @@
 
 /datum/job/doctor/equip(var/mob/living/carbon/human/H)
 	..()
-	H.generate_stats(STAT_IQ)
+	H.newgeneratestats(7,13,10,13,11,14,9,14)
 	H.generate_skills(list("medical","cleaning", "surgery"))
 
 /datum/job/cmo
@@ -344,7 +344,7 @@
 
 /datum/job/cmo/equip(var/mob/living/carbon/human/H)
 	..()
-	H.generate_stats(STAT_IQ)
+	H.newgeneratestats(8,14,10,13,12,16,10,15)
 	H.generate_skills(list("medical","cleaning", "surgery"))
 
 /datum/job/hos
@@ -372,7 +372,7 @@
 		..()
 		if(!H.religion_is_legal())//So that they can't be heretics.
 			H.religion = LEGAL_RELIGION
-		H.add_stats(rand(14,18), rand(8,10), rand(8,10), rand(6,8))
+		H.newgeneratestats(12,19,10,15,6,12,12,16)
 		//H.generate_stats(STAT_ST)
 		H.generate_skills(list("melee","ranged"))
 
@@ -393,7 +393,7 @@
 		..()
 		if(!H.religion_is_legal())//So that they can't be heretics.
 			H.religion = LEGAL_RELIGION
-		H.add_stats(rand(13,16), rand(8,10), rand(8,10), rand(6,8))
+		H.newgeneratestats(12,15,10,13,6,14,9,14)
 		H.generate_skills(list("melee","ranged"))
 
 /datum/job/detective
@@ -414,7 +414,7 @@
 		if(!H.religion_is_legal())//So that they can't be heretics.
 			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(11,16), rand(10,14), rand(7,10))
-		H.generate_stats(STAT_ST)
+		H.generate_stats(STAT_ST) //detective is getting removed, i'm not bothering to give them stat ranges
 		H.generate_skills(list("melee","ranged"))
 
 /datum/job/qm
@@ -433,7 +433,7 @@
 		if(!H.religion_is_legal())//So that they can't be heretics.
 			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(8,12), rand(9,12), rand(7,10))
-		H.generate_stats(STAT_DX)
+		H.newgeneratestats(8,13,10,14,11,14,8,14)
 		H.generate_skills(list("crafting","engineering", "mining"))
 
 /datum/job/engineer
@@ -454,7 +454,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(10,15), rand(7,10), rand(9,14))
-		H.generate_stats(STAT_IQ)
+		H.newgeneratestats(10,14,10,14,11,14,7,14)
 		H.generate_skills(list("crafting","engineering"))
 
 /datum/job/mining
@@ -474,7 +474,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(9,16), rand(9,12), rand(6,9))
-		H.generate_stats(STAT_ST)
+		H.newgeneratestats(12,16,8,13,6,11,9,16)
 		H.generate_skills(list("crafting","engineering", "mining"))
 
 /datum/job/cargo_tech
@@ -492,7 +492,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(9,12), rand(9,12), rand(6,9))
-		H.generate_stats(STAT_DX)
+		H.newgeneratestats(11,13,8,13,6,11,9,16)
 		H.generate_skills(list("crafting","engineering", "mining"))
 
 /datum/job/cargo_tech/machinist
@@ -539,7 +539,7 @@
 	department_flag = SRV
 	equip(var/mob/living/carbon/human/H)
 		..()
-		H.generate_stats(STAT_HT)
+		H.newgeneratestats(11,13,8,13,6,11,9,16)
 		H.generate_skills(list("cooking","melee"))
 
 /datum/job/bartender
@@ -555,7 +555,7 @@
 	outfit_type = /decl/hierarchy/outfit/job/service/bartender
 	equip(var/mob/living/carbon/human/H)
 		..()
-		H.generate_stats(STAT_HT)
+		H.newgeneratestats(9,13,8,13,9,13,9,14)
 		H.generate_skills(list("cooking","ranged"))
 
 /datum/job/chaplain
@@ -588,7 +588,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(9,12), rand(9,12), rand(5,9))
-		H.generate_stats(STAT_HT)
+		H.newgeneratestats(12,16,8,13,4,9,9,16)
 		H.generate_skills(list("cleaning"))
 
 /datum/job/hydro
@@ -622,9 +622,9 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.generate_stats(STAT_DX)
-		H.add_stats(rand(2,18), rand(2,18), rand(2,18), rand(2,18))
+		H.newgeneratestats(2,18,2,18,2,18,2,18)
 		H.generate_skills(list("melee"))
-		H.setBrainLoss(rand(50, 200))
+		H.setBrainLoss(rand(50, 180))
 
 //CHURCH JOBS
 //The inquisitor, aka the supreme arbiter.

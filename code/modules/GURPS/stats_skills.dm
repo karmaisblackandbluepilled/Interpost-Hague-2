@@ -124,6 +124,12 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 		stats[stat] = pick(rand_stats)
 		rand_stats.Remove(stats[stat])
 
+/mob/proc/newgeneratestats(var/stre1, var/stre2, var/dext1, var/dext2, var/int1, var/int2, var/helt1, var/helt2)
+	stats[STAT_ST] = rand(stre1, stre2)
+	stats[STAT_DX] = rand(dext1, dext2)
+	stats[STAT_IQ] = rand(int1, int2)
+	stats[STAT_HT] = rand(helt1, helt2)
+
 /mob/proc/adjustStrength(var/num)
 	stats[STAT_ST] += num
 
