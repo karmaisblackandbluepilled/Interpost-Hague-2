@@ -730,10 +730,6 @@ var/global/floorIsLava = 0
 		return
 
 	config.ooc_allowed = !(config.ooc_allowed)
-	if (config.ooc_allowed)
-		to_world("<B>The OOC channel has been globally enabled!</B>")
-	else
-		to_world("<B>The OOC channel has been globally disabled!</B>")
 	log_and_message_admins("toggled OOC.")
 	SSstatistics.add_field_details("admin_verb","TOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

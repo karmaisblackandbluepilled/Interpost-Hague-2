@@ -27,7 +27,6 @@ GLOBAL_LIST_INIT(default_uplink_source_priority, list(
 	var/obj/item/device/uplink/T = new(P, M.mind, amount)
 	P.hidden_uplink = T
 	P.lock_code = pda_pass
-	to_chat(M, "<span class='notice'>A portable object teleportation relay has been installed in your [P.name]. Simply enter the code \"[pda_pass]\" into the ringtone select to unlock its hidden features.</span>")
 	M.mind.store_memory("<B>Uplink Passcode:</B> [pda_pass] ([P.name]).")
 
 /decl/uplink_source/radio
@@ -52,7 +51,6 @@ GLOBAL_LIST_INIT(default_uplink_source_priority, list(
 	var/obj/item/device/uplink/T = new(R, M.mind, amount)
 	R.hidden_uplink = T
 	R.traitor_frequency = freq
-	to_chat(M, "<span class='notice'>A portable object teleportation relay has been installed in your [R.name]. Simply dial the frequency [format_frequency(freq)] to unlock its hidden features.</span>")
 	M.mind.store_memory("<B>Radio Freq:</B> [format_frequency(freq)] ([R.name]).")
 
 /decl/uplink_source/implant

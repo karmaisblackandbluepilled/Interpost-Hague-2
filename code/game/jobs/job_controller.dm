@@ -536,16 +536,37 @@ var/global/datum/controller/occupations/job_master
 				W.set_dir(H.dir)
 				W.buckled_mob = H
 				W.add_fingerprint(H)
+		to_chat(H, "<B>.......<B>")
+		spawn(20)
+			to_chat(H, "<B>Wh-where am I?</B>")
+			spawn(20)
+				to_chat(H, "<B>.......<B> ")
+				spawn(20)
+					to_chat(H, "<B>Right, right...I'm [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank] working for Tetracorp on one of their ''state of the art'' research outposts. ")
+					spawn(20)
+						to_chat(H, "<B>.......<B>")
+						spawn(20)
+							if(job.supervisors)
+								to_chat(H, "<b>I gotta remember to pay attention to [job.supervisors], if I want to keep my job...</b>")
+							spawn(20)
+								to_chat(H, "<B>.......<B>")
+								spawn(20)
+									if(H.religion_is_legal())
+										to_chat(H, "<B>May <font color='red'>Verina</font></b> watch over me. She knows I need it, around these parts...")
+										spawn(20)
+											to_chat(H, "<B>The cryosleep's made my mind a bit fuzzy... I should really try to remember the Holy Prayer..")
+											spawn(20)
+												to_chat(H, "<B>.......<B>")
 
-		to_chat(H, "<B>You are [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
+									else
+										to_chat(H, "<B>May the great <b><font color='red'>[H.religion]</font> watch over me and protect me from the infidels around me.")
+										spawn(20)
+											to_chat(H, "<B>.......<B>")
+									if(player_is_antag(H.mind))
+										to_chat(H, "<B>.......<B>")
+										spawn(20)
+											to_chat(H, "<B><font color = 'red'>I remember what I'm here to do.</font><B>")
 
-		if(job.supervisors)
-			to_chat(H, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
-
-		to_chat(H, "<b>To speak on your department's radio channel use :h. For the use of other channels, examine your headset.</b>")
-
-		if(job.req_admin_notify)
-			to_chat(H, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
 
 
 		// EMAIL GENERATION
@@ -570,7 +591,6 @@ var/global/datum/controller/occupations/job_master
 			var/datum/computer_file/data/email_account/EA = new/datum/computer_file/data/email_account()
 			EA.password = GenerateKey()
 			EA.login = 	complete_login
-			to_chat(H, "Your email account address is <b>[EA.login]</b> and the password is <b>[EA.password]</b>. This information has also been placed into your notes.")
 			H.mind.store_memory("Your email account address is [EA.login] and the password is [EA.password].")
 		// END EMAIL GENERATION
 
@@ -585,13 +605,9 @@ var/global/datum/controller/occupations/job_master
 			H.mind.religion = H.religion
 			if(H.religion_is_legal())
 				GLOB.all_religions[LEGAL_RELIGION].followers += H.name // I don't think I want to save copies of the entire entity.
-				to_chat(H, "You are a worshipper of <b><font color='red'>[H.religion]</font></b>. It's the only legal religion in this land, do not be swayed by the heretics of the <b>[ILLEGAL_RELIGION]</b>.")
 				if(prob(95) || rank == "Supreme Arbiter")//Only a 5% chance to not remember the prayer, but supreme arbiter never forgets
 					H.mind.prayer = accepted_prayer
 					H.verbs += /mob/living/proc/recite_prayer
-					to_chat(H, "<span class='notice'>The prayer today is: <b>[H.mind.prayer]</b> Remember this prayer.</span>")
-				else
-					to_chat(H, "<span class='danger'>Try as you might... you just can't seem to remember the prayer today. This won't look good to the Arbiters.")
 				if(rank == "Supreme Arbiter")
 					H.mind.prayer = accepted_prayer
 					H.verbs += /mob/living/proc/interrogate
@@ -600,7 +616,6 @@ var/global/datum/controller/occupations/job_master
 				//to_world("RELIGION TESTING FIX THIS")
 				//H.religion = "Your god here"
 				H.religion = pick(GLOB.all_religions - ILLEGAL_RELIGION - LEGAL_RELIGION)
-				to_chat(H, "You are a worshipper of the <b><font color='red'>[H.religion]</font>. It is not a legal religion of this land. Do not be caught by the <b>Inquisition</b>. Check your notes for who your brothers and sisters are.")
 				H.verbs += /mob/living/proc/make_shrine
 				H.verbs += /mob/living/proc/praise_god
 				var/obj/item/I = GLOB.all_religions[H.religion].holy_item.type
@@ -615,7 +630,6 @@ var/global/datum/controller/occupations/job_master
 					if(GLOB.all_spells[S].old_god == H.religion)
 						pickable_spells += GLOB.all_spells[S]
 				var/datum/old_god_spell/new_spell = pick(pickable_spells)
-				to_chat(H, "You can only recall a single incantation.  It is the <b><font color='red'>[new_spell.name]</font> spell.  The incantation is <b><font color='red'>[new_spell.phrase]</font>")
 				H.mind.store_memory("[new_spell.name] Incantation: \"[new_spell.phrase]\"")
 
 		BITSET(H.hud_updateflag, ID_HUD)

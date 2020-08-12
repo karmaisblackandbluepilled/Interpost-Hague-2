@@ -105,8 +105,6 @@ SUBSYSTEM_DEF(ticker)
 		send2adminirc("Round has started with no admins online.")
 
 	config.ooc_allowed = !(config.ooc_allowed)
-	if(!config.ooc_allowed)
-		to_world("<B>The OOC channel has been globally disabled!</B>")
 
 
 /datum/controller/subsystem/ticker/proc/playing_tick()
@@ -270,7 +268,6 @@ Helpers
 	mode = mode_datum
 	master_mode = mode_to_try
 	if(mode_to_try == "secret")
-		to_world("<B>The current game mode is - Secret!</B>")
 		var/list/mode_names = list()
 		for (var/mode_tag in base_runnable_modes)
 			var/datum/game_mode/M = gamemode_cache[mode_tag]

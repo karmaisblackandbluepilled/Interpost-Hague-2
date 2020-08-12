@@ -73,8 +73,7 @@ var/global/datum/controller/gameticker/ticker
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
 				config.ooc_allowed = !(config.ooc_allowed)
-				if(!config.ooc_allowed)
-					to_world("<B>The OOC channel has been globally disabled!</B>")
+
 
 	while (!setup())
 
@@ -126,8 +125,6 @@ var/global/datum/controller/gameticker/ticker
 		mode = null
 		job_master.ResetOccupations()
 		return 0
-	if(hide_mode)
-		to_world("<B>The current game mode is - Secret!</B>")
 
 		if(runnable_modes.len)
 			var/list/tmpmodes = new
