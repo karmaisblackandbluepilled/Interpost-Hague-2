@@ -545,7 +545,6 @@
 
 	occupant.stop_pulling()
 	if(occupant.client)
-		to_chat(occupant, "<span class='notice'>[on_enter_occupant_message]</span>")
 		occupant.client.perspective = EYE_PERSPECTIVE
 		occupant.client.eye = src
 	occupant.forceMove(src)
