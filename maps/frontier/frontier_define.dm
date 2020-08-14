@@ -12,7 +12,7 @@
 	player_levels = list(1,2,3,4)
 	accessible_z_levels = list("1"=1,"2"=1,"3"=1,"4"=1)
 
-	allowed_spawns = list("Arrivals Shuttle")
+	allowed_spawns = list("Arrivals Shuttle", "Cryogenic Storage")
 
 	station_name  = "NO DATA"
 	station_short = "Frontier"

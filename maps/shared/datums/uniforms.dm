@@ -1,12 +1,14 @@
 /decl/hierarchy/outfit/job/dreyfus/magistrate
 	name = OUTFIT_JOB_NAME("Magistrate")
-	l_ear = /obj/item/device/radio/headset/heads/captain
-	uniform = /obj/item/clothing/under/rank/captain
-	shoes = /obj/item/clothing/shoes/dress
+	l_ear = null
+	uniform = null
+	shoes = null
 	id_type = /obj/item/weapon/card/id/dreyfus/gold
+	id_slot = slot_wear_mask
 	pda_type = /obj/item/device/pda/captain
-	head = /obj/item/clothing/head/capshat//FIT FOR A FUCKING retard
-	suit = /obj/item/clothing/suit/capsuit
+	pda_slot = slot_wear_id
+	head = null//FIT FOR A FUCKING retard
+	suit = null
 
 /decl/hierarchy/outfit/job/dreyfus/countess
 	name = OUTFIT_JOB_NAME("Countess")

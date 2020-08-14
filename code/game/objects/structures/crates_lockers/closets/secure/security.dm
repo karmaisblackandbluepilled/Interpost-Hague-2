@@ -11,22 +11,16 @@
 	return list(
 		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/captain, /obj/item/weapon/storage/backpack/satchel_cap)),
 		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/captain, 50),
-		/obj/item/clothing/suit/captunic,
-		/obj/item/clothing/suit/captunic/capjacket,
-		/obj/item/clothing/head/caphat/cap,
+		/obj/item/clothing/head/capshat,
+		/obj/item/clothing/glasses/sunglasses,
 		/obj/item/clothing/under/rank/captain,
-		/obj/item/clothing/suit/armor/vest/nt,
-		/obj/item/weapon/cartridge/captain,
-		/obj/item/clothing/head/helmet,
-		/obj/item/clothing/shoes/brown,
 		/obj/item/device/radio/headset/heads/captain,
+		/obj/item/clothing/shoes/dress,
+		/obj/item/clothing/suit/capsuit,
 		/obj/item/clothing/gloves/captain,
 		/obj/item/weapon/gun/energy/gun,
 		/obj/item/clothing/suit/armor/captain,
-		/obj/item/weapon/melee/telebaton,
-		/obj/item/clothing/under/dress/dress_cap,
-		/obj/item/clothing/head/caphat/formal,
-		/obj/item/clothing/under/captainformal,
+		/obj/item/weapon/melee/telebaton
 	)
 
 /obj/structure/closet/secure_closet/hop

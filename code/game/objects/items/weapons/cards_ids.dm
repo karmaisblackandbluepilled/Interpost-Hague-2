@@ -100,7 +100,7 @@ var/const/NO_EMAG_ACT = -50
 
 	var/access = list()
 	var/registered_name = "Unknown" // The name registered_name on the card
-	slot_flags = SLOT_ID
+	slot_flags = SLOT_ID | SLOT_MASK
 
 	var/age = "\[UNSET\]"
 	var/blood_type = "\[UNSET\]"

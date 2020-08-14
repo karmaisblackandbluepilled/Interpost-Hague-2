@@ -23,7 +23,10 @@
 		/obj/item/weapon/folder,
 		/obj/item/weapon/photo,
 		/obj/item/weapon/paper_bundle,
-		/obj/item/weapon/sample)
+		/obj/item/weapon/sample,
+		/obj/item/weapon/card/id,
+		/obj/item/weapon/disk/nuclear)
+
 
 /obj/structure/filingcabinet/chestdrawer
 	name = "chest drawer"

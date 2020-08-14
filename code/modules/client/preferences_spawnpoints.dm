@@ -84,23 +84,6 @@ GLOBAL_VAR(spawntypes)
 		if(!C.occupant)
 			C.set_occupant(victim, 1)
 			to_chat(victim, "<span class='notice'You're awakening from cryosleep...</span>")
-			victim.sleeping = 0
-			victim.Sleeping(rand(2,7))
-			victim.bodytemperature = victim.species.cold_level_1 //very cold, but a point before damage
-
-			if(!victim.isSynthetic()) //fluff. I didn't used else at next lines because of code readness
-				to_chat(victim, "<span class='notice'>You're feeling cold and realize that there are water drops on your face. Cryogenic Liquid just \
-				stopped refrigerating the air in the chamber...You see a bright light, blinding you. \
-				Yet another shift has begun.</span>")
-			else
-				to_chat(victim, "<span class='notice'>Awakening signal received. Battery is charged. All systems nominal. Ready to work, my lord.</span>")
-
-			if(!victim.isSynthetic())
-				give_effect(victim)
-				give_advice(victim)
-
-				victim.drowsyness += 30
-			break
 
 /datum/spawnpoint/cyborg
 	display_name = "Cyborg Storage"
