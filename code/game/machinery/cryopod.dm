@@ -297,7 +297,6 @@
 
 //Lifted from Unity stasis.dm and refactored. ~Zuhayr
 /obj/machinery/cryopod/Process()
-	playsound(src, 'sound/machines/cryo2.ogg', 65, 0)
 	if(occupant)
 
 		//Allow a ten minute gap between entering the pod and actually despawning.

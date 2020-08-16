@@ -10,11 +10,15 @@
 /obj/structure/closet/secure_closet/scientist/WillContain()
 	return list(
 		new /datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/messenger/tox, /obj/item/weapon/storage/backpack/satchel_tox)),
-		/obj/item/clothing/under/rank/scientist,
-		/obj/item/clothing/suit/storage/toggle/labcoat,
+		/obj/item/clothing/suit/storage/toggle/labcoat/blue,
+		/obj/item/clothing/suit/storage/toggle/labcoat/blue,
+		/obj/item/clothing/shoes/white,
 		/obj/item/clothing/shoes/white,
 		/obj/item/device/radio/headset/headset_sci,
+		/obj/item/device/radio/headset/headset_sci,
 		/obj/item/clothing/mask/gas,
+		/obj/item/clothing/gloves/latex,
+		/obj/item/clothing/gloves/latex,
 		/obj/item/weapon/clipboard
 	)
 

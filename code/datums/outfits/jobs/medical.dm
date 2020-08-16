@@ -1,9 +1,9 @@
 /decl/hierarchy/outfit/job/medical
 	hierarchy_type = /decl/hierarchy/outfit/job/medical
-	l_ear = /obj/item/device/radio/headset/headset_med
-	shoes = /obj/item/clothing/shoes/white
+	l_ear = null
+	shoes = null
 	pda_type = /obj/item/device/pda/medical
-	pda_slot = slot_l_store
+	pda_slot = slot_wear_id
 
 /decl/hierarchy/outfit/job/medical/New()
 	..()
@@ -11,20 +11,23 @@
 
 /decl/hierarchy/outfit/job/medical/cmo
 	name = OUTFIT_JOB_NAME("Chief Medical Officer")
-	l_ear  =/obj/item/device/radio/headset/heads/cmo
-	uniform = /obj/item/clothing/under/rank/chief_medical_officer
-	suit = /obj/item/clothing/suit/storage/toggle/labcoat/cmo
-	shoes = /obj/item/clothing/shoes/brown
-	l_hand = /obj/item/weapon/storage/firstaid/adv
-	r_pocket = /obj/item/device/flashlight/pen
+	l_ear = null
+	uniform = null
+	shoes = null
+	id_slot = slot_wear_mask
+	head = null
+	suit = null
 	id_type = /obj/item/weapon/card/id/medical/head
 	pda_type = /obj/item/device/pda/heads/cmo
 
 /decl/hierarchy/outfit/job/medical/doctor
 	name = OUTFIT_JOB_NAME("Medical Doctor")
-	uniform = /obj/item/clothing/under/rank/medical
-	suit = /obj/item/clothing/suit/storage/toggle/labcoat
-	r_pocket = /obj/item/device/flashlight/pen
+	l_ear = null
+	uniform = null
+	shoes = null
+	id_slot = slot_wear_mask
+	head = null
+	suit = null
 	id_type = /obj/item/weapon/card/id/medical
 
 /decl/hierarchy/outfit/job/medical/doctor/emergency_physician
@@ -33,8 +36,8 @@
 
 /decl/hierarchy/outfit/job/medical/doctor/surgeon
 	name = OUTFIT_JOB_NAME("Surgeon")
-	uniform = /obj/item/clothing/under/rank/medical/scrubs/blue
-	head = /obj/item/clothing/head/surgery/blue
+	uniform = null
+	head = null
 
 /decl/hierarchy/outfit/job/medical/doctor/virologist
 	name = OUTFIT_JOB_NAME("Virologist")

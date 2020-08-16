@@ -1,29 +1,42 @@
 /decl/hierarchy/outfit/job/cargo
-	l_ear = /obj/item/device/radio/headset/headset_cargo
+	l_ear = null
 	hierarchy_type = /decl/hierarchy/outfit/job/cargo
 
 /decl/hierarchy/outfit/job/cargo/qm
 	name = OUTFIT_JOB_NAME("Cargo")
-	uniform = /obj/item/clothing/under/rank/cargo
-	shoes = /obj/item/clothing/shoes/brown
-	glasses = /obj/item/clothing/glasses/sunglasses
-	l_hand = /obj/item/weapon/clipboard
+	l_ear = null
+	uniform = null
+	shoes = null
+	id_slot = slot_wear_mask
+	head = null
+	suit = null
 	id_type = /obj/item/weapon/card/id/cargo/head
 	pda_type = /obj/item/device/pda/quartermaster
+	pda_slot = slot_wear_id
 
 /decl/hierarchy/outfit/job/cargo/cargo_tech
 	name = OUTFIT_JOB_NAME("Cargo technician")
-	uniform = /obj/item/clothing/under/rank/cargotech
+	l_ear = null
+	uniform = null
+	shoes = null
+	id_slot = slot_wear_mask
+	head = null
+	suit = null
+	pda_slot = slot_wear_id
 	id_type = /obj/item/weapon/card/id/cargo
 	pda_type = /obj/item/device/pda/cargo
 
 /decl/hierarchy/outfit/job/cargo/mining
 	name = OUTFIT_JOB_NAME("Shaft miner")
-	uniform = /obj/item/clothing/under/rank/miner
+	l_ear = null
+	uniform = null
+	shoes = null
+	id_slot = slot_wear_mask
+	head = null
+	suit = null
 	id_type = /obj/item/weapon/card/id/cargo/mining
 	pda_type = /obj/item/device/pda/shaftminer
-	backpack_contents = list(/obj/item/weapon/crowbar = 1, /obj/item/weapon/storage/ore = 1)
-	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL
+	flags = OUTFIT_EXTENDED_SURVIVAL
 
 /decl/hierarchy/outfit/job/cargo/mining/New()
 	..()

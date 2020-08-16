@@ -87,7 +87,9 @@
 		/obj/item/device/flash,
 		/obj/item/weapon/melee/telebaton,
 		/obj/item/device/holowarrant,
-		/obj/item/weapon/material/sword
+		/obj/item/weapon/material/sword,
+		/obj/item/clothing/under/rank/head_of_security/corp,
+		/obj/item/clothing/glasses/eyepatch/hud/security
 	)
 
 /obj/structure/closet/secure_closet/warden
@@ -147,6 +149,9 @@
 		/obj/item/clothing/head/soft/sec/corp,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/device/holowarrant,
+		/obj/item/clothing/head/helmet/steelhelm,
+		/obj/item/clothing/under/secdp,
+		/obj/item/clothing/suit/vest/civilian/bulletproof
 	)
 
 //INQUISITION LOCKER

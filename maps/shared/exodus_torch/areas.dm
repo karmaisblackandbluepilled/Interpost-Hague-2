@@ -401,6 +401,7 @@
 /area/crew_quarters/sleep/cryo
 	name = "\improper Cryogenic Storage"
 	icon_state = "Sleep"
+	forced_ambience = list('sound/machines/cryo2.ogg')
 
 /area/hydroponics
 	name = "\improper Hydroponics"

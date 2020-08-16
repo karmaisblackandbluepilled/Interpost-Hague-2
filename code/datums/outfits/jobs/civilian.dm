@@ -7,24 +7,31 @@
 
 /decl/hierarchy/outfit/job/service/bartender
 	name = OUTFIT_JOB_NAME("Bartender")
-	uniform = /obj/item/clothing/under/rank/bartender
+	l_ear = null
+	uniform = null
+	shoes = null
+	head = null
+	suit = null
 	id_type = /obj/item/weapon/card/id/civilian/bartender
 	pda_type = /obj/item/device/pda/bar
 
 /decl/hierarchy/outfit/job/service/chef
 	name = OUTFIT_JOB_NAME("Chef")
-	uniform = /obj/item/clothing/under/rank/chef
-	suit = /obj/item/clothing/suit/chef
-	head = /obj/item/clothing/head/chefhat
+	l_ear = null
+	uniform = null
+	shoes = null
+	head = null
+	suit = null
 	id_type = /obj/item/weapon/card/id/civilian/chef
 	pda_type = /obj/item/device/pda/chef
 
 /decl/hierarchy/outfit/job/service/gardener
 	name = OUTFIT_JOB_NAME("Gardener")
-	uniform = /obj/item/clothing/under/rank/hydroponics
-	suit = /obj/item/clothing/suit/apron
-	gloves = /obj/item/clothing/gloves/thick/botany
-	r_pocket = /obj/item/device/analyzer/plant_analyzer
+	l_ear = null
+	uniform = null
+	shoes = null
+	head = null
+	suit = null
 	id_type = /obj/item/weapon/card/id/civilian/botanist
 	pda_type = /obj/item/device/pda/botanist
 
@@ -36,13 +43,21 @@
 
 /decl/hierarchy/outfit/job/service/janitor
 	name = OUTFIT_JOB_NAME("Janitor")
-	uniform = /obj/item/clothing/under/rank/janitor
+	l_ear = null
+	uniform = null
+	shoes = null
+	head = null
+	suit = null
 	id_type = /obj/item/weapon/card/id/civilian/janitor
 	pda_type = /obj/item/device/pda/janitor
 
 /decl/hierarchy/outfit/job/librarian
 	name = OUTFIT_JOB_NAME("Librarian")
-	uniform = /obj/item/clothing/under/suit_jacket/red
+	l_ear = null
+	uniform = null
+	shoes = null
+	head = null
+	suit = null
 	id_type = /obj/item/weapon/card/id/civilian/librarian
 	pda_type = /obj/item/device/pda/librarian
 
