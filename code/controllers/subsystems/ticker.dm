@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(ticker)
 
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
-		to_world("<FONT color='blue'><B>You need to get back.</B></FONT>")
+		to_world("<FONT color='blue'><B>The clock is ticking, you must awake.</B></FONT>")
 		if (eof)
 			if(prob(40))
 				eof.apply_event()

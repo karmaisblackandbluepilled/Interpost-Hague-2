@@ -467,7 +467,7 @@
 	if(usr.stat != 0)
 		return
 
-	icon_state = base_icon_state
+
 
 	//Eject any items that aren't meant to be in the pod.
 	var/list/items = src.contents
@@ -477,6 +477,7 @@
 	for(var/obj/item/W in items)
 		W.forceMove(get_turf(src))
 	src.go_out()
+	icon_state = base_icon_state
 	add_fingerprint(usr)
 
 
@@ -524,15 +525,18 @@
 		playsound(src, 'sound/machines/button11.ogg', 40)
 		return
 
-	if(occupant.client)
-		occupant.client.eye = src.occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
+	if(do_after(usr, 30, src))
+		if(occupant.client)
+			occupant.client.eye = src.occupant.client.mob
+			occupant.client.perspective = MOB_PERSPECTIVE
 
-	occupant.forceMove(get_turf(src))
-	playsound(src, 'sound/machines/cryoexit.ogg', 40)
-	set_occupant(null)
 
-	icon_state = base_icon_state
+
+		occupant.forceMove(get_turf(src))
+		playsound(src, 'sound/machines/cryoexit.ogg', 40)
+		set_occupant(null)
+
+		icon_state = base_icon_state
 
 	return
 
