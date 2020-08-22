@@ -58,11 +58,11 @@
 					if(prob(brute) || force_droplimb)
 						droplimb(0, DROPLIMB_EDGE)
 						return
-				else if(burn >= max_damage / DROPLIMB_THRESHOLD_DESTROY)
+				else if(burn >= 2*max_damage / DROPLIMB_THRESHOLD_DESTROY)
 					if(prob(burn/3) || force_droplimb)
 						droplimb(0, DROPLIMB_BURN)
 						return
-				else if(brute >= max_damage / DROPLIMB_THRESHOLD_DESTROY)
+				else if(brute >= 2*max_damage / DROPLIMB_THRESHOLD_DESTROY)
 					if(prob(brute) || force_droplimb)
 						droplimb(0, DROPLIMB_BLUNT)
 						return
