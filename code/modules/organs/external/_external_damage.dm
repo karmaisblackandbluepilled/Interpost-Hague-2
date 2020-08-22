@@ -44,6 +44,7 @@
 			if(instance >= statht)
 				force_droplimb = 1
 			if(instonce >= statht)
+				var/force_droplimbburn
 				force_droplimbburn = 1
 			var/edge_eligible = 0
 			if(edge)
