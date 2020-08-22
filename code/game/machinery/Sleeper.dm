@@ -48,9 +48,10 @@
 
 	if(iscarbon(occupant) && stasis > 1)
 		occupant.SetStasis(stasis)
-	occupant.adjustBruteLoss(-1.5)
-	occupant.adjustToxLoss(-1.5)
-	occupant.adjustFireLoss(-1.5)
+	if(occupant != null)
+		occupant.adjustBruteLoss(-1.5)
+		occupant.adjustToxLoss(-1.5)
+		occupant.adjustFireLoss(-1.5)
 
 /obj/machinery/sleeper/update_icon()
 	icon_state = "sleeper_[occupant ? "1" : "0"]"
