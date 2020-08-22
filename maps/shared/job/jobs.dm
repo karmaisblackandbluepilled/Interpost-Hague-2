@@ -237,13 +237,14 @@
 	sex_lock = MALE
 	rankprefix  = "Captain"
 
+
 	equip(var/mob/living/carbon/human/H)
 		..()
 		if(!H.religion_is_legal())//So that they can't be heretics.
 			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
 		H.newgeneratestats(9,14,9,13,9,15,10,16)
-		H.generate_skills("ranged")
+		H.generate_skills(list("ranged"))
 
 /datum/job/countess
 	title = "Countess"
