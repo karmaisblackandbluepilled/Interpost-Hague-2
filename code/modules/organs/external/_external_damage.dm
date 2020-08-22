@@ -35,44 +35,37 @@
 	//If limb took enough damage, try to cut or tear it off
 	if(owner && loc == owner && !is_stump())
 		if(!cannot_amputate && config.limbs_can_break)
-			if((brute_dam + burn_dam + brute + burn + spillover) >= (max_damage * config.organ_health_multiplier))
-				var/force_droplimb = 0
-				if((brute_dam + burn_dam + brute + burn + spillover) >= (max_damage * config.organ_health_multiplier * 4))
-					force_droplimb = 1
-				//organs can come off in three cases
-				//1. If the damage source is edge_eligible and the brute damage dealt exceeds the edge threshold, then the organ is cut off.
-				//2. If the damage amount dealt exceeds the disintegrate threshold, the organ is completely obliterated.
-				//3. If the organ has already reached or would be put over it's max damage amount (currently redundant),
-				//   and the brute damage dealt exceeds the tearoff threshold, the organ is torn off.
-				//Check edge eligibility
-				var/edge_eligible = 0
-				if(edge)
-					if(istype(used_weapon,/obj/item))
-						var/obj/item/W = used_weapon
-						if(W.w_class >= w_class)
-							edge_eligible = 1
-					else
+			var/statht = owner.stats[STAT_HT] * 8
+			var/instance = 0
+			var/instonce = 0
+			instance = brute_dam - instance
+			instonce = burn_dam - instonce
+			var/force_droplimb = 0
+			if(instance >= statht)
+				force_droplimb = 1
+			if(instonce >= statht)
+				force_droplimbburn = 1
+			var/edge_eligible = 0
+			if(edge)
+				if(istype(used_weapon,/obj/item))
+					var/obj/item/W = used_weapon
+					if(W.w_class >= w_class)
 						edge_eligible = 1
-				brute = pure_brute
-				if(edge_eligible && brute >= max_damage / DROPLIMB_THRESHOLD_EDGE)
-					if(prob(brute) || force_droplimb)
-						droplimb(0, DROPLIMB_EDGE)
-						return
-				else if(burn >= max_damage / DROPLIMB_THRESHOLD_DESTROY)
-					if(prob(burn/3) || force_droplimb)
-						droplimb(0, DROPLIMB_BURN)
-						return
-				else if(brute >= max_damage / DROPLIMB_THRESHOLD_DESTROY)
-					if(prob(brute) || force_droplimb)
-						droplimb(0, DROPLIMB_BLUNT)
-						return
-				else if(brute >= max_damage / DROPLIMB_THRESHOLD_TEAROFF)
-					if(prob(brute/3) || force_droplimb)
-						droplimb(0, DROPLIMB_EDGE)
-						return
-				else if(force_droplimb)
-					droplimb(0, DROPLIMB_BLUNT)
+				else
+					edge_eligible = 1
+			brute = pure_brute
+			if(edge_eligible && brute >= 60 / DROPLIMB_THRESHOLD_EDGE)
+				if(prob(brute) || force_droplimb)
+					droplimb(0, DROPLIMB_EDGE)
 					return
+			if(brute_dam >= (100 + statht))
+				droplimb(0, DROPLIMB_BLUNT)
+			if(burn_dam >= (100 + statht))
+				droplimb(0, DROPLIMB_BURN)
+			if(force_droplimb)
+				droplimb(0, DROPLIMB_BLUNT)
+			if(force_droplimbburn)
+				droplimb(0, DROPLIMB_BURN)
 
 	// High brute damage or sharp objects may damage internal organs
 	var/damage_amt = brute
