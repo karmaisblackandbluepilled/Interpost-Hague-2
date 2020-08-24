@@ -24,6 +24,18 @@
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 
+/mob/living/simple_animal/corgi/walter
+	name = "Walter"
+	real_name = "walter"
+	desc = "He seems to stare into your soul, unblinkingly."
+	icon_state = "walter"
+	icon_living = "walter"
+	icon_dead = "walter_dead"
+	speak = list("Borf.", "Borfk.", "Augh.", "Yaugh!")
+	speak_emote = list("states clearly", "boofs")
+	emote_hear = list("barks", "scratches his ear", "taps his feet on the floor", "sneezes")
+	emote_see = list("stares through you", "makes himself comfortable", "adopts an indescifrable expression")
+
 //IAN! SQUEEEEEEEEE~
 /mob/living/simple_animal/corgi/Ian
 	name = "Ian"
@@ -136,6 +148,12 @@
 
 //pupplies cannot wear anything.
 /mob/living/simple_animal/corgi/puppy/Topic(href, href_list)
+	if(href_list["remove_inv"] || href_list["add_inv"])
+		to_chat(usr, "<span class='warning'>You can't fit this on [src]</span>")
+		return
+	..()
+
+/mob/living/simple_animal/corgi/walter/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
 		to_chat(usr, "<span class='warning'>You can't fit this on [src]</span>")
 		return
