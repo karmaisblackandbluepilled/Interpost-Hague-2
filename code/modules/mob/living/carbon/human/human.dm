@@ -1734,11 +1734,6 @@ var/list/rank_prefix = list(\
 	if(!zoomed)
 		if(lying)
 			return
-		var/obj/item/weapon/gun/projectile/heavysniper/S = get_active_hand()
-		if(istype(S))
-			do_normal_zoom = FALSE
-			S.toggle_scope(src, 2)
-			set_face_dir(dir)//Face what we're zoomed in on.
 
 		if(do_normal_zoom)
 			var/_x = 0
@@ -1755,59 +1750,35 @@ var/list/rank_prefix = list(\
 			if(ishuman(src))
 				var/mob/living/carbon/human/H = src
 				H.hide_cone()
-			if(get_preference_value(/datum/client_preference/smooth_zoom) ==  GLOB.PREF_YES)
-				animate(client, pixel_x = world.icon_size*_x, pixel_y = world.icon_size*_y, time = 2, easing = CUBIC_EASING)
-			else
-				client.pixel_x = world.icon_size*_x
-				client.pixel_y = world.icon_size*_y
+			client.pixel_x = world.icon_size*_x
+			client.pixel_y = world.icon_size*_y
+
 			set_face_dir(dir)//Face what we're zoomed in on.
 
 		zoomed = TRUE
 
 
 	else
-		var/obj/item/weapon/gun/projectile/heavysniper/S = get_active_hand()
-		if(istype(S))
-			if(S.zoom)//Only do this if we're zoomed in please.
-				do_normal_zoom = FALSE
-				S.toggle_scope(src, 2)
-				set_face_dir(FALSE)//Reset us back to normal.
-		S = get_inactive_hand()//Then check if it's in our inactive hand instead. That way you can swap hands and still unzoom normally.
-		if(istype(S))
-			if(S.zoom)
-				do_normal_zoom = FALSE
-				S.toggle_scope(src, 2)
-				set_face_dir(FALSE)//Reset us back to normal.
-
 		if(do_normal_zoom)
 			if(ishuman(src))
 				var/mob/living/carbon/human/H = src
-				if(get_preference_value(/datum/client_preference/smooth_zoom) ==  GLOB.PREF_YES)
-					animate(client, pixel_x = 0, pixel_y = 0, time = 2, easing = CUBIC_EASING)
-					spawn(1)
-						H.show_cone()
-				else
-					client.pixel_x = 0
-					client.pixel_y = 0
+				spawn(1)
 					H.show_cone()
+				client.pixel_x = 0
+				client.pixel_y = 0
+				H.show_cone()
 
 
 			set_face_dir(FALSE)//Reset us back to normal.
 		zoomed = FALSE
 
-/atom/proc/look_into_distance(var/mob/living/carbon/human/user)
+/atom/CtrlAltClick(var/mob/living/carbon/human/user)
 	..()
 	if(!istype(user))
 		return
 	if(user.lying)
 		return
-
-	visible_message("<span class='notice'>[user] peers into the distance.</span>")
+	if(!user.zoomed)
+		visible_message("<span class='notice'>[user] peers into the distance.</span>")
 	user.face_atom(src)
 	user.do_zoom()
-
-/mob/living/carbon/human/verb/distance_hotkey()
-	set name = ".distance"
-	set hidden = 1
-
-	look_into_distance()
