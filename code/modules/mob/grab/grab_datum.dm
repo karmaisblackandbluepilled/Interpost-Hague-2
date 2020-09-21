@@ -16,8 +16,8 @@
 	var/shield_assailant = 0					// Whether the person you're grabbing will shield you from bullets.,,
 	var/point_blank_mult = 1					// How much the grab increases point blank damage.
 	var/same_tile = 0							// If the grabbed person and the grabbing person are on the same tile.
-	var/ladder_carry = 0						// If the grabber can carry the grabbed person up or down ladders.
-	var/can_throw = 0							// If the grabber can throw the person grabbed.
+	var/ladder_carry = TRUE						// If the grabber can carry the grabbed person up or down ladders.
+	var/can_throw = TRUE						// If the grabber can throw the person grabbed.
 	var/downgrade_on_action = 0					// If the grab needs to be downgraded when the grabber does stuff.
 	var/downgrade_on_move = 0					// If the grab needs to be downgraded when the grabber moves.
 	var/force_danger = 0						// If the grab is strong enough to be able to force someone to do something harmful to them.
@@ -51,6 +51,7 @@
 	var/disarm_action = "disarm intent"
 	var/grab_action = "grab intent"
 	var/harm_action = "harm intent"
+	var/activate_effect = TRUE
 
 /*
 	These procs shouldn't be overriden in the children unless you know what you're doing with them; they handle important core functions.
@@ -106,7 +107,8 @@
 	else
 		special_target_effect(G)
 
-	process_effect(G)
+	if(activate_effect)	
+		process_effect(G)
 
 /datum/grab/proc/throw_held(var/obj/item/grab/G)
 	var/mob/living/carbon/human/affecting = G.affecting
@@ -261,14 +263,11 @@
 /datum/grab/proc/handle_resist(var/obj/item/grab/G)
 	var/mob/living/carbon/human/affecting = G.affecting
 	var/mob/living/carbon/human/assailant = G.assailant
-	var/break_strength = 1
 
 	if(affecting.incapacitated(INCAPACITATION_KNOCKOUT | INCAPACITATION_STUNNED))
 		to_chat(G.assailant, "<span class='warning'>You can't resist in your current state!</span>")
 
-	break_strength = breakability + size_difference(affecting, assailant)
-
-	break_strength = affecting.stats[STAT_ST] - assailant.stats[STAT_ST]  //Stats are used for grab
+	var/break_strength = breakability + size_difference(affecting, assailant)
 
 	if(affecting.incapacitated(INCAPACITATION_ALL))
 		break_strength--
@@ -279,7 +278,7 @@
 		to_chat(G.assailant, "<span class='warning'>You try to break free but feel that unless something changes, you'll never escape!</span>")
 		return
 
-	var/break_chance = break_chance_table[clamp(break_strength, 1, break_chance_table.len)]
+	var/break_chance = break_chance_table[Clamp(break_strength, 1, break_chance_table.len)]
 	if(prob(break_chance))
 		if(can_downgrade_on_resist && !prob((break_chance+100)/2))
 			affecting.visible_message("<span class='warning'>[affecting] has loosened [assailant]'s grip!</span>")
@@ -300,3 +299,6 @@
 		var/mob/living/L = mob
 		if(!L.canmove && L.grabbed_by.len)
 			L.resist() //shortcut for resisting grabs
+
+/datum/grab/proc/attack_self_act(var/obj/item/grab/G)
+	return
