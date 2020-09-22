@@ -118,6 +118,46 @@
 
 		if(I_GRAB)
 			visible_message("<span class='danger'>[M] attempted to grab \the [src]!</span>")
+			if(istype(H))
+
+				var/obj/item/organ/external/affecting = get_organ(H.zone_sel.selecting)
+				if(!affecting || affecting.is_stump())
+					to_chat(H, "There is nothing to grab!")
+					return
+
+				switch(H.zone_sel.selecting)
+					//Strangling
+					if(BP_THROAT)
+						return H.make_grab(H, src, GRAB_STRANGLE)
+
+					//Wrenching
+					if(BP_L_LEG)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_R_LEG)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_L_HAND)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_R_HAND)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_HEAD)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_R_FOOT)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_L_FOOT)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_L_ARM)
+						return H.make_grab(H, src, GRAB_WRENCH)
+					if(BP_R_ARM)
+						return H.make_grab(H, src, GRAB_WRENCH)
+
+					//Tackling?
+					if(BP_CHEST)
+						return H.make_grab(H, src, GRAB_TAKEDOWN)
+					if(BP_GROIN)
+						return H.make_grab(H, src, GRAB_TAKEDOWN)
+
+
+
 			return H.make_grab(H, src)
 
 			if(attempt_dodge())//Trying to dodge it before they even have the chance to miss us.
@@ -178,22 +218,17 @@
 					This place is kind of convoluted and will need some explaining.
 					ran_zone() will pick out of 11 zones, thus the chance for hitting
 					our target where we want to hit them is circa 9.1%.
-
 					Now since we want to statistically hit our target organ a bit more
 					often than other organs, we add a base chance of 20% for hitting it.
-
 					This leaves us with the following chances:
-
 					If aiming for chest:
 						27.3% chance you hit your target organ
 						70.5% chance you hit a random other organ
 						 2.2% chance you miss
-
 					If aiming for something else:
 						23.2% chance you hit your target organ
 						56.8% chance you hit a random other organ
 						15.0% chance you miss
-
 					Note: We don't use get_zone_with_miss_chance() here since the chances
 						  were made for projectiles.
 					TODO: proc for melee combat miss chances depending on organ?
@@ -312,7 +347,6 @@
 /*
 	We want to ensure that a mob may only apply pressure to one organ of one mob at any given time. Currently this is done mostly implicitly through
 	the behaviour of do_after() and the fact that applying pressure to someone else requires a grab:
-
 	If you are applying pressure to yourself and attempt to grab someone else, you'll change what you are holding in your active hand which will stop do_mob()
 	If you are applying pressure to another and attempt to apply pressure to yourself, you'll have to switch to an empty hand which will also stop do_mob()
 	Changing targeted zones should also stop do_mob(), preventing you from applying pressure to more than one body part at once.
