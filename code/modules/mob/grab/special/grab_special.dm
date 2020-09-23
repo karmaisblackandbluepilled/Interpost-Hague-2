@@ -126,14 +126,13 @@
 		return
 
 	assailant.doing_something = TRUE
+	affecting.visible_message("<span class='notice'>[assailant] is trying to pin [affecting] to the ground!</span>")
 
 	if(!do_after(assailant, 30, affecting))
 		assailant.doing_something = FALSE
 		return
 
 	if(!G.attacking && !affecting.lying)
-
-		affecting.visible_message("<span class='notice'>[assailant] is trying to pin [affecting] to the ground!</span>")
 		G.attacking = 1
 
 		if(!assailant.statcheck(assailant.stats[STAT_ST] / 2 + 3) >= SUCCESS && do_mob(assailant, affecting, 30))
